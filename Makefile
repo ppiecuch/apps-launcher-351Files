@@ -1,4 +1,4 @@
-TARGET = FileMan
+TARGET = fileman 
 
 # DEVICE ?= HANDHELD
 # DEVICE ?= RG351P
