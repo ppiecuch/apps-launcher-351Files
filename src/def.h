@@ -8,7 +8,7 @@
 //~ #define INHIBIT(X) X
 #define INHIBIT(X) /* X */
 
-#define APP_NAME "FileMan"
+#define APP_NAME "fileman"
 
 // Parameters for RG351P
 #if defined(DEVICE_RG351P)
