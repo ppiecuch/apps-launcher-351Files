@@ -58,6 +58,22 @@
    #define KEYBOARD_KEY_SPACING     10
    #define KEYBOARD_SYMBOL_SIZE     58
 
+// Parameters for OGU
+#if defined(DEVICE_OGU)
+   #define SCREEN_WIDTH             854
+   #define SCREEN_HEIGHT            480
+   #define HARDWARE_ACCELERATION    0
+   #define FULLSCREEN               1
+   #define FONT_NAME                "NotoSans-Regular.ttf"
+   #define FONT_NAME_MONO           "NotoSansMono-Regular.ttf"
+   #define FONT_SIZE                20
+   #define LINE_HEIGHT              32
+   #define ICON_SIZE                24
+   #define MARGIN_X                 10
+   #define KEYBOARD_MARGIN          8
+   #define KEYBOARD_KEY_SPACING     4
+   #define KEYBOARD_SYMBOL_SIZE     24
+
 // Paramaters for desktop PC
 #else
    #define SCREEN_WIDTH             640
