@@ -59,7 +59,7 @@
    #define KEYBOARD_SYMBOL_SIZE     58
 
 // Parameters for OGU
-#if defined(DEVICE_OGU)
+#elif defined(DEVICE_OGU)
    #define SCREEN_WIDTH             854
    #define SCREEN_HEIGHT            480
    #define HARDWARE_ACCELERATION    0
