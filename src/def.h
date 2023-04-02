@@ -59,7 +59,7 @@
    #define KEYBOARD_SYMBOL_SIZE     58
 
 // Parameters for S922X
-#if defined(DEVICE_S922X)
+#elif defined(DEVICE_S922X)
    #define SCREEN_WIDTH             854
    #define SCREEN_HEIGHT            480
    #define HARDWARE_ACCELERATION    0
