@@ -58,8 +58,8 @@
    #define KEYBOARD_KEY_SPACING     10
    #define KEYBOARD_SYMBOL_SIZE     58
 
-// Parameters for OGU
-#elif defined(DEVICE_OGU)
+// Parameters for S922X
+#if defined(DEVICE_S922X)
    #define SCREEN_WIDTH             854
    #define SCREEN_HEIGHT            480
    #define HARDWARE_ACCELERATION    0
