@@ -43,7 +43,7 @@
    #define KEYBOARD_SYMBOL_SIZE     58
 
 // Parameters for handheld
-#elif defined(DEVICE_HANDHELD)
+#elif defined(DEVICE_AMD64)
    #define SCREEN_WIDTH             1280
    #define SCREEN_HEIGHT            720
    #define HARDWARE_ACCELERATION    0
