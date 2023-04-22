@@ -118,7 +118,7 @@
 #define VIEWER_SCROLL_SPEED      20
 
 // Button events
-#if defined(DEVICE_HANDHELD)
+#if defined(DEVICE_AMD64)
    #define BUTTON_PRESSED_UP              event.type == SDL_JOYHATMOTION && event.jhat.value == SDL_HAT_UP
    #define BUTTON_PRESSED_DOWN            event.type == SDL_JOYHATMOTION && event.jhat.value == SDL_HAT_DOWN
    #define BUTTON_PRESSED_LEFT            event.type == SDL_JOYHATMOTION && event.jhat.value == SDL_HAT_LEFT
