@@ -10,8 +10,24 @@
 
 #define APP_NAME "fileman"
 
+// Parameters for RK3326
+#if defined(DEVICE_RK3326)
+   #define SCREEN_WIDTH             480
+   #define SCREEN_HEIGHT            320
+   #define HARDWARE_ACCELERATION    0
+   #define FULLSCREEN               1
+   #define FONT_NAME                "NotoSans-Regular.ttf"
+   #define FONT_NAME_MONO           "NotoSansMono-Regular.ttf"
+   #define FONT_SIZE                14
+   #define LINE_HEIGHT              24
+   #define ICON_SIZE                24
+   #define MARGIN_X                 8
+   #define KEYBOARD_MARGIN          3
+   #define KEYBOARD_KEY_SPACING     3
+   #define KEYBOARD_SYMBOL_SIZE     24
+
 // Parameters for rk3566
-#if defined(DEVICE_RK3566)
+#elif defined(DEVICE_RK3566)
    #define SCREEN_WIDTH             640
    #define SCREEN_HEIGHT            480
    #define HARDWARE_ACCELERATION    0
@@ -137,6 +153,25 @@
    #define BUTTON_HELD_PAGEDOWN           SDL_JoystickGetButton(g_joystick, 5) || SDL_JoystickGetButton(g_joystick, 7)
    #define BUTTON_HELD_SELECT             SDL_JoystickGetButton(g_joystick, 3)
    #define BUTTON_HELD_VALIDATE           SDL_JoystickGetButton(g_joystick, 1)
+#elif defined(DEVICE_RK3326)
+   #define BUTTON_PRESSED_UP              event.type == SDL_JOYHATMOTION && event.jhat.value == SDL_HAT_UP || event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 8
+   #define BUTTON_PRESSED_DOWN            event.type == SDL_JOYHATMOTION && event.jhat.value == SDL_HAT_DOWN || event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 9
+   #define BUTTON_PRESSED_LEFT            event.type == SDL_JOYHATMOTION && event.jhat.value == SDL_HAT_LEFT || event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 10
+   #define BUTTON_PRESSED_RIGHT           event.type == SDL_JOYHATMOTION && event.jhat.value == SDL_HAT_RIGHT || event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 11
+   #define BUTTON_PRESSED_PAGEUP          event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 4
+   #define BUTTON_PRESSED_PAGEDOWN        event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 5
+   #define BUTTON_PRESSED_VALIDATE        event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 0
+   #define BUTTON_PRESSED_BACK            event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 1
+   #define BUTTON_PRESSED_MENU_CONTEXT    event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 2
+   #define BUTTON_PRESSED_SELECT          event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 3
+   #define BUTTON_HELD_UP                 SDL_JoystickGetHat(g_joystick, 0) == SDL_HAT_UP || SDL_JoystickGetButton(g_joystick, 8)
+   #define BUTTON_HELD_DOWN               SDL_JoystickGetHat(g_joystick, 0) == SDL_HAT_DOWN || SDL_JoystickGetButton(g_joystick, 9)
+   #define BUTTON_HELD_LEFT               SDL_JoystickGetHat(g_joystick, 0) == SDL_HAT_LEFT || SDL_JoystickGetButton(g_joystick, 10)
+   #define BUTTON_HELD_RIGHT              SDL_JoystickGetHat(g_joystick, 0) == SDL_HAT_RIGHT || SDL_JoystickGetButton(g_joystick, 11)
+   #define BUTTON_HELD_PAGEUP             SDL_JoystickGetButton(g_joystick, 4)
+   #define BUTTON_HELD_PAGEDOWN           SDL_JoystickGetButton(g_joystick, 5)
+   #define BUTTON_HELD_SELECT             SDL_JoystickGetButton(g_joystick, 3)
+   #define BUTTON_HELD_VALIDATE           SDL_JoystickGetButton(g_joystick, 0)
 #elif defined(DEVICE_RK3566)
    #define BUTTON_PRESSED_UP              event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 13
    #define BUTTON_PRESSED_DOWN            event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 14
