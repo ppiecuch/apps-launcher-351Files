@@ -43,7 +43,7 @@
    #define KEYBOARD_SYMBOL_SIZE     24
 
 // Parameters for rk3566-x55
-#elif defined(DEVICE_RK3566-X55)
+#elif defined(DEVICE_RK3566_X55)
    #define SCREEN_WIDTH             1280
    #define SCREEN_HEIGHT            720
    #define HARDWARE_ACCELERATION    0
@@ -207,7 +207,7 @@
    #define BUTTON_HELD_PAGEDOWN           SDL_JoystickGetButton(g_joystick, 5) || SDL_JoystickGetButton(g_joystick, 7)
    #define BUTTON_HELD_SELECT             SDL_JoystickGetButton(g_joystick, 3)
    #define BUTTON_HELD_VALIDATE           SDL_JoystickGetButton(g_joystick, 1)
-#elif defined(DEVICE_RK3566-X55)
+#elif defined(DEVICE_RK3566_X55)
    #define BUTTON_PRESSED_UP              event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 13
    #define BUTTON_PRESSED_DOWN            event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 14
    #define BUTTON_PRESSED_LEFT            event.type == SDL_JOYBUTTONDOWN && event.jbutton.button == 15
