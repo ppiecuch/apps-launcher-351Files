@@ -40,7 +40,7 @@
    #define MARGIN_X                 24
    #define KEYBOARD_MARGIN          19
    #define KEYBOARD_KEY_SPACING     10
-   #define KEYBOARD_SYMBOL_SIZE     5
+   #define KEYBOARD_SYMBOL_SIZE     58
 
 // Parameters for rk3566
 #elif defined(DEVICE_RK3566)
