@@ -63,13 +63,13 @@ void Dialog::render(const bool p_focus)
    l_dialogDim.w = DIALOG_BORDER + MARGIN_X + l_dialogDim.w + MARGIN_X + DIALOG_BORDER;
    if (m_iconPresent)
       l_dialogDim.w += ICON_SIZE + MARGIN_X;
-   if (l_dialogDim.w > SCREEN_WIDTH)
-      l_dialogDim.w = SCREEN_WIDTH;
+   if (l_dialogDim.w > m_screenWidth)
+      l_dialogDim.w = m_screenWidth;
 
    // Render dialog background
    l_dialogDim.h = LINE_HEIGHT + (m_labels.size() + m_options.size()) * LINE_HEIGHT + DIALOG_BORDER;
-   l_dialogDim.x = (SCREEN_WIDTH - l_dialogDim.w) / 2;
-   l_dialogDim.y = (SCREEN_HEIGHT - l_dialogDim.h) / 2;
+   l_dialogDim.x = (m_screenWidth - l_dialogDim.w) / 2;
+   l_dialogDim.y = (m_screenHeight - l_dialogDim.h) / 2;
    SDL_SetRenderDrawColor(g_renderer, COLOR_TITLE_BG, 255);
    SDL_RenderFillRect(g_renderer, &l_dialogDim);
 

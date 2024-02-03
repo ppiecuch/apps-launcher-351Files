@@ -19,6 +19,8 @@ IWindow::IWindow(const bool p_fullscreen, const std::string &p_title) :
    m_title(p_title),
    m_cursor(0),
    m_cursorLoop(false),
+   m_screenWidth(SCREEN_WIDTH),
+   m_screenHeight(SCREEN_HEIGHT),
    m_nbItems(0),
    m_nbVisibleLines(0),
    m_nbVisibleChars(0),
@@ -26,19 +28,29 @@ IWindow::IWindow(const bool p_fullscreen, const std::string &p_title) :
    m_lastPressed(-1),
    m_retVal(-1)
 {
+
+   SDL_DisplayMode DM;
+   SDL_GetDesktopDisplayMode(0, &DM);
+
+   if(DM.w)
+      m_screenWidth = DM.w;
+   if(DM.h)
+      m_screenHeight = DM.h;
+   
    // Init camera
    m_camera.x = 0;
    m_camera.y = 0;
    // Init scrollbar
    m_scrollbar.w = 0;
    m_scrollbar.h = 0;
-   m_scrollbar.x = SCREEN_WIDTH - MARGIN_X;
+   m_scrollbar.x = m_screenWidth - MARGIN_X;
    m_scrollbar.y = LINE_HEIGHT;
    // Init m_nbVisibleLines
-   m_nbVisibleLines = (SCREEN_HEIGHT - LINE_HEIGHT) / LINE_HEIGHT;
+   m_nbVisibleLines = (m_screenHeight - LINE_HEIGHT) / LINE_HEIGHT;
    // Add window to the list
    g_windows.push_back(this);
    g_hasChanged = true;
+
 }
 
 //------------------------------------------------------------------------------
@@ -47,6 +59,16 @@ IWindow::IWindow(const bool p_fullscreen, const std::string &p_title) :
 bool IWindow::isFullScreen(void) const
 {
    return m_fullscreen;
+}
+
+int IWindow::getScreenWidth(void) const
+{
+   return m_screenWidth;
+}
+
+int IWindow::getScreenHeight(void) const
+{
+   return m_screenHeight;
 }
 
 //------------------------------------------------------------------------------
@@ -325,7 +347,7 @@ void IWindow::adjustScrollbar(void)
    }
    // Scrollbar size
    m_scrollbar.w = MARGIN_X;
-   m_scrollbar.h = round((double)(SCREEN_HEIGHT - LINE_HEIGHT) / (m_nbItems - m_nbVisibleLines + 1));
+   m_scrollbar.h = round((double)(m_screenHeight - LINE_HEIGHT) / (m_nbItems - m_nbVisibleLines + 1));
    if (m_scrollbar.h < LINE_HEIGHT / 2)
       m_scrollbar.h = LINE_HEIGHT / 2;
    // Scrollbar position
@@ -343,9 +365,9 @@ void IWindow::adjustScrollbarPosition(void)
    // Case: last item visible => scrollbar at bottom
    if (m_camera.y >= m_nbItems - m_nbVisibleLines)
    {
-      m_scrollbar.y = SCREEN_HEIGHT - m_scrollbar.h;
+      m_scrollbar.y = m_screenHeight - m_scrollbar.h;
       return;
    }
    // General case
-   m_scrollbar.y = LINE_HEIGHT + round(((double)(SCREEN_HEIGHT - LINE_HEIGHT - m_scrollbar.h) / (m_nbItems - m_nbVisibleLines)) * m_camera.y);
+   m_scrollbar.y = LINE_HEIGHT + round(((double)(m_screenHeight - LINE_HEIGHT - m_scrollbar.h) / (m_nbItems - m_nbVisibleLines)) * m_camera.y);
 }

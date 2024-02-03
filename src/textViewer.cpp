@@ -63,7 +63,7 @@ TextViewer::TextViewer(const std::string &p_title):
    // Init scrollbar
    adjustScrollbar();
    // Number of visible chars
-   m_nbVisibleChars = round(static_cast<double>(SCREEN_WIDTH - 2*MARGIN_X - m_scrollbar.w) / g_charW);
+   m_nbVisibleChars = round(static_cast<double>(m_screenWidth - 2*MARGIN_X - m_scrollbar.w) / g_charW);
 }
 
 //------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ void TextViewer::render(const bool p_focus)
 
    // Render title background
    SDL_SetRenderDrawColor(g_renderer, COLOR_TITLE_BG, 255);
-   SDL_Rect rect { 0, 0, SCREEN_WIDTH, LINE_HEIGHT };
+   SDL_Rect rect { 0, 0, m_screenWidth, LINE_HEIGHT };
    SDL_RenderFillRect(g_renderer, &rect);
 
    // Render title

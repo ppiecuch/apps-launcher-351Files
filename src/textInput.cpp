@@ -13,10 +13,10 @@ TextInput::TextInput(const std::string &p_title, SDL_Texture *p_icon, const std:
    // Cursor at the end of the text
    m_cursor = m_inputText.size();
    // Dialog background
-   m_dialogBackground.w = SCREEN_WIDTH;
+   m_dialogBackground.w = m_screenWidth;
    m_dialogBackground.h = 2*LINE_HEIGHT + DIALOG_BORDER;
-   m_dialogBackground.x = (SCREEN_WIDTH - m_dialogBackground.w) / 2;
-   m_dialogBackground.y = SCREEN_HEIGHT - Keyboard::getKeyboardH() - m_dialogBackground.h + DIALOG_BORDER;
+   m_dialogBackground.x = (m_screenWidth - m_dialogBackground.w) / 2;
+   m_dialogBackground.y = m_screenHeight - Keyboard::getKeyboardH(m_screenWidth) - m_dialogBackground.h + DIALOG_BORDER;
    // Dialog body
    m_dialogBody.x = m_dialogBackground.x + DIALOG_BORDER;
    m_dialogBody.y = m_dialogBackground.y + LINE_HEIGHT;

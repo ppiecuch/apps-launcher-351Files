@@ -37,7 +37,7 @@ TextEditor::TextEditor(const std::string &p_title):
    // Init scrollbar
    adjustScrollbar();
    // Number of visible chars
-   m_nbVisibleChars = round(static_cast<double>(SCREEN_WIDTH - 2*MARGIN_X - m_scrollbar.w) / g_charW);
+   m_nbVisibleChars = round(static_cast<double>(m_screenWidth - 2*MARGIN_X - m_scrollbar.w) / g_charW);
 }
 
 //------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ void TextEditor::render(const bool p_focus)
 
    // Render title background
    SDL_SetRenderDrawColor(g_renderer, COLOR_TITLE_BG, 255);
-   SDL_Rect rect { 0, 0, SCREEN_WIDTH, LINE_HEIGHT };
+   SDL_Rect rect { 0, 0, m_screenWidth, LINE_HEIGHT };
    SDL_RenderFillRect(g_renderer, &rect);
 
    // Render title
@@ -128,7 +128,7 @@ void TextEditor::keyPressed(const SDL_Event &event)
       // Reset timer
       resetTimer();
       // If the keyboard hides the cursor, move the camera to make it visible
-      if ((m_inputTextCursor.y - m_camera.y + 2) * LINE_HEIGHT > SCREEN_HEIGHT - Keyboard::getKeyboardH())
+      if ((m_inputTextCursor.y - m_camera.y + 2) * LINE_HEIGHT > m_screenHeight - Keyboard::getKeyboardH(m_screenWidth))
       {
          m_camera.y = m_inputTextCursor.y - 2;
          adjustScrollbarPosition();
@@ -311,8 +311,8 @@ void TextEditor::adjustCamera(void)
       m_camera.y = m_inputTextCursor.y - m_nbVisibleLines + 1;
 
    // Adjust camera X
-   if (MARGIN_X + (m_inputTextCursor.x - m_camera.x) * g_charW > SCREEN_WIDTH - m_scrollbar.w - MARGIN_X)
-      m_camera.x = m_inputTextCursor.x - ((SCREEN_WIDTH - m_scrollbar.w - 2*MARGIN_X) / g_charW);
+   if (MARGIN_X + (m_inputTextCursor.x - m_camera.x) * g_charW > m_screenWidth - m_scrollbar.w - MARGIN_X)
+      m_camera.x = m_inputTextCursor.x - ((m_screenWidth - m_scrollbar.w - 2*MARGIN_X) / g_charW);
    else if ((m_inputTextCursor.x - m_camera.x) * g_charW < 0)
       m_camera.x = m_inputTextCursor.x;
 }
