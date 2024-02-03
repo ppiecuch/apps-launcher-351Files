@@ -69,6 +69,9 @@ class IWindow
    void adjustScrollbar(void);
    void adjustScrollbarPosition(void);
 
+   int getScreenWidth(void) const;
+   int getScreenHeight(void) const;
+
    // Window is fullscreen or not
    bool m_fullscreen;
 
@@ -83,6 +86,10 @@ class IWindow
 
    // Loop or not when moving cursor
    bool m_cursorLoop;
+
+   // Calculated screen resolution, based on SDL or def if not found
+   int m_screenWidth;
+   int m_screenHeight;
 
    // Number of selectable items
    int m_nbItems;
