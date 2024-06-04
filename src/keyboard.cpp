@@ -188,9 +188,9 @@ void Keyboard::init(void)
       return;
 
    // Size and coordinates of the first key
-   m_key[0].w = getKeyW();
-   m_key[0].h = getKeyH();
-   m_key[0].x = round((SCREEN_WIDTH - (11*m_key[0].w + 10*KEYBOARD_KEY_SPACING)) / 2);
+   m_key[0].w = getKeyW(m_screenWidth);
+   m_key[0].h = getKeyH(m_screenWidth);
+   m_key[0].x = round((m_screenWidth - (11*m_key[0].w + 10*KEYBOARD_KEY_SPACING)) / 2);
    m_key[0].y = KEYBOARD_MARGIN;
 
    // Height of all the keys
@@ -199,10 +199,10 @@ void Keyboard::init(void)
       m_key[indKey].h = m_key[0].h;
 
    // Size and coordinates of the keyboard
-   m_keyboard.w = getKeyboardW();
-   m_keyboard.h = getKeyboardH();
+   m_keyboard.w = getKeyboardW(m_screenWidth);
+   m_keyboard.h = getKeyboardH(m_screenWidth);
    m_keyboard.x = 0;
-   m_keyboard.y = SCREEN_HEIGHT - m_keyboard.h;
+   m_keyboard.y = m_screenHeight - m_keyboard.h;
 
    // Keys: 1st line
    for (indKey = 1; indKey <= 10; ++indKey)
@@ -409,24 +409,24 @@ SDL_Color Keyboard::getBackgroundColor(const int p_i, const bool p_focus) const
 //------------------------------------------------------------------------------
 
 // Key and keyboard size
-int Keyboard::getKeyW(void)
+int Keyboard::getKeyW(const int screen_width)
 {
-   return round((SCREEN_WIDTH - 2*KEYBOARD_MARGIN - 10*KEYBOARD_KEY_SPACING) / 11);
+   return round((screen_width - 2*KEYBOARD_MARGIN - 10*KEYBOARD_KEY_SPACING) / 11);
 }
 
-int Keyboard::getKeyH(void)
+int Keyboard::getKeyH(const int screen_width)
 {
-   return round(getKeyW() / 1.2);
+   return round(getKeyW(screen_width) / 1.2);
 }
 
-int Keyboard::getKeyboardW(void)
+int Keyboard::getKeyboardW(const int screen_width)
 {
-   return SCREEN_WIDTH;
+   return screen_width;
 }
 
-int Keyboard::getKeyboardH(void)
+int Keyboard::getKeyboardH(const int screen_width)
 {
-   return 2*KEYBOARD_MARGIN + 3*KEYBOARD_KEY_SPACING + 4*getKeyH();
+   return 2*KEYBOARD_MARGIN + 3*KEYBOARD_KEY_SPACING + 4*getKeyH(screen_width);
 }
 
 //------------------------------------------------------------------------------

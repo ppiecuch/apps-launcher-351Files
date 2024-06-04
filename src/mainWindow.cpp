@@ -51,7 +51,7 @@ void MainWindow::render(const bool p_focus)
 
    // Render title background
    SDL_SetRenderDrawColor(g_renderer, COLOR_TITLE_BG, 255);
-   SDL_Rect rect { 0, 0, SCREEN_WIDTH, LINE_HEIGHT };
+   SDL_Rect rect { 0, 0, m_screenWidth, LINE_HEIGHT };
    SDL_RenderFillRect(g_renderer, &rect);
 
    // Render title
@@ -66,7 +66,7 @@ void MainWindow::render(const bool p_focus)
       SDL_SetRenderDrawColor(g_renderer, COLOR_CURSOR_NO_FOCUS, 255);
    rect.x = 0;
    rect.y = LINE_HEIGHT + (m_cursor - m_camera.y) * LINE_HEIGHT;
-   rect.w = SCREEN_WIDTH - m_scrollbar.w;
+   rect.w = m_screenWidth - m_scrollbar.w;
    rect.h = LINE_HEIGHT;
    SDL_RenderFillRect(g_renderer, &rect);
 
@@ -102,10 +102,10 @@ void MainWindow::render(const bool p_focus)
       if (m_fileLister[l_i].m_size == ULLONG_MAX)
          sizeW = 0;
       else
-         sizeW = SDLUtils::renderText(FileUtils::formatSize(m_fileLister[l_i].m_size), g_font, SCREEN_WIDTH - m_scrollbar.w - MARGIN_X, l_y, l_fgColor, l_bgColor, SDLUtils::T_ALIGN_RIGHT, SDLUtils::T_ALIGN_MIDDLE);
+         sizeW = SDLUtils::renderText(FileUtils::formatSize(m_fileLister[l_i].m_size), g_font, m_screenWidth - m_scrollbar.w - MARGIN_X, l_y, l_fgColor, l_bgColor, SDLUtils::T_ALIGN_RIGHT, SDLUtils::T_ALIGN_MIDDLE);
 
       // File name
-      fileNameMaxWidth = SCREEN_WIDTH - 4 * MARGIN_X - ICON_SIZE - m_scrollbar.w - sizeW;
+      fileNameMaxWidth = m_screenWidth - 4 * MARGIN_X - ICON_SIZE - m_scrollbar.w - sizeW;
       if (m_cursor == l_i)
       {
          if (m_scrollFileNameActive)

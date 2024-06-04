@@ -20,10 +20,10 @@ class Keyboard : public IWindow
    virtual void render(const bool p_focus);
 
    // Key and keyboard size
-   static int getKeyW(void);
-   static int getKeyH(void);
-   static int getKeyboardW(void);
-   static int getKeyboardH(void);
+   static int getKeyW(const int screen_width);
+   static int getKeyH(const int screen_width);
+   static int getKeyboardW(const int screen_width);
+   static int getKeyboardH(const int screen_width);
 
    private:
 
